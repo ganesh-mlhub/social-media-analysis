@@ -32,18 +32,18 @@ function App() {
   }, []);
 
   const fetchData = async () => {
-    try {
-      const t = await axios.get("/trending");
-      const u = await axios.get("/active-users");
-      const l = await axios.get("/likes");
+  try {
+    const t = await axios.get(process.env.REACT_APP_API_URL + "/trending");
+    const u = await axios.get(process.env.REACT_APP_API_URL + "/active-users");
+    const l = await axios.get(process.env.REACT_APP_API_URL + "/likes");
 
-      setTrending(t.data || []);
-      setUsers(u.data || []);
-      setLikes(l.data || []);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    setTrending(t.data);
+    setUsers(u.data);
+    setLikes(l.data);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
   const cardStyle = {
     background: "#ffffff",
