@@ -355,23 +355,22 @@ function App() {
     }
   };
 
-  const cardStyle = {
-    background: "#ffffff",
-    padding: "15px",
-    borderRadius: "15px",
-    boxShadow: "0 5px 15px rgba(0,0,0,0.2)",
-    width: "100%",
-    boxSizing: "border-box"
+  const glassCard = {
+    background: "rgba(255,255,255,0.15)",
+    backdropFilter: "blur(15px)",
+    borderRadius: "20px",
+    padding: "20px",
+    boxShadow: "0 8px 32px rgba(0,0,0,0.2)",
+    color: "#fff"
   };
 
   return (
     <div
       style={{
         minHeight: "100vh",
-        width: "100%",
-        background: "linear-gradient(135deg, #667eea, #764ba2)",
-        padding: "10px",
-        boxSizing: "border-box"
+        background: "linear-gradient(135deg, #141e30, #243b55)",
+        padding: "20px",
+        fontFamily: "Arial, sans-serif"
       }}
     >
       {/* HEADER */}
@@ -380,9 +379,9 @@ function App() {
         animate={{ opacity: 1, y: 0 }}
         style={{
           textAlign: "center",
-          color: "#fff",
-          marginBottom: "20px",
-          fontSize: "22px"
+          marginBottom: "30px",
+          fontSize: "28px",
+          color: "#fff"
         }}
       >
         🚀 Social Media Analytics Dashboard
@@ -392,75 +391,66 @@ function App() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr",
-          gap: "15px",
-          width: "100%"
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: "20px",
+          maxWidth: "1200px",
+          margin: "auto"
         }}
       >
         {/* Trending */}
-        <motion.div whileHover={{ scale: 1.02 }} style={cardStyle}>
+        <motion.div whileHover={{ scale: 1.05 }} style={glassCard}>
           <h2>🔥 Trending Hashtags</h2>
-          <div style={{ overflowX: "auto" }}>
-            <Bar
-              data={{
-                labels: trending.map(t => t._id),
-                datasets: [
-                  {
-                    label: "Hashtag Count",
-                    data: trending.map(t => t.count),
-                    backgroundColor: "#ff6384"
-                  }
-                ]
-              }}
-              options={{ responsive: true }}
-            />
-          </div>
+          <Bar
+            data={{
+              labels: trending.map(t => t._id),
+              datasets: [
+                {
+                  label: "Count",
+                  data: trending.map(t => t.count),
+                  backgroundColor: "#ff7eb3"
+                }
+              ]
+            }}
+          />
         </motion.div>
 
         {/* Users */}
-        <motion.div whileHover={{ scale: 1.02 }} style={cardStyle}>
+        <motion.div whileHover={{ scale: 1.05 }} style={glassCard}>
           <h2>👤 Active Users</h2>
-          <div style={{ overflowX: "auto" }}>
-            <Bar
-              data={{
-                labels: users.map(u => u._id),
-                datasets: [
-                  {
-                    label: "Total Posts",
-                    data: users.map(u => u.totalPosts),
-                    backgroundColor: "#36a2eb"
-                  }
-                ]
-              }}
-              options={{ responsive: true }}
-            />
-          </div>
+          <Bar
+            data={{
+              labels: users.map(u => u._id),
+              datasets: [
+                {
+                  label: "Posts",
+                  data: users.map(u => u.totalPosts),
+                  backgroundColor: "#7afcff"
+                }
+              ]
+            }}
+          />
         </motion.div>
 
         {/* Likes */}
-        <motion.div whileHover={{ scale: 1.02 }} style={cardStyle}>
-          <h2>❤️ Likes Distribution</h2>
-          <div style={{ maxWidth: "300px", margin: "auto" }}>
-            <Pie
-              data={{
-                labels: likes.map(l => l._id),
-                datasets: [
-                  {
-                    data: likes.map(l => l.totalLikes),
-                    backgroundColor: [
-                      "#ff6384",
-                      "#36a2eb",
-                      "#ffce56",
-                      "#4bc0c0",
-                      "#9966ff",
-                      "#ff9f40"
-                    ]
-                  }
-                ]
-              }}
-              options={{ responsive: true }}
-            />
-          </div>
+        <motion.div whileHover={{ scale: 1.05 }} style={glassCard}>
+          <h2>❤️ Likes</h2>
+          <Pie
+            data={{
+              labels: likes.map(l => l._id),
+              datasets: [
+                {
+                  data: likes.map(l => l.totalLikes),
+                  backgroundColor: [
+                    "#ff7eb3",
+                    "#7afcff",
+                    "#feff9c",
+                    "#a0c4ff",
+                    "#bdb2ff"
+                  ]
+                }
+              ]
+            }}
+          />
         </motion.div>
       </div>
     </div>
