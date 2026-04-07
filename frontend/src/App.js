@@ -510,20 +510,18 @@ function App() {
   };
 
   const cardStyle = {
-    background: "rgba(255,255,255,0.08)",
-    borderRadius: "18px",
+    background: "#ffffff",
+    borderRadius: "16px",
     padding: "20px",
-    backdropFilter: "blur(12px)",
-    border: "1px solid rgba(255,255,255,0.15)",
-    boxShadow: "0 8px 25px rgba(0,0,0,0.3)",
-    color: "#fff"
+    boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
+    border: "1px solid #f1f5f9"
   };
 
   return (
     <div
       style={{
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #0f172a, #1e293b, #0f172a)",
+        background: "linear-gradient(135deg, #eef2ff, #f8fafc)",
         padding: "20px",
         fontFamily: "Inter, sans-serif"
       }}
@@ -534,14 +532,13 @@ function App() {
         animate={{ opacity: 1, y: 0 }}
         style={{
           textAlign: "center",
-          marginBottom: "40px",
-          fontSize: "30px",
+          marginBottom: "35px",
+          fontSize: "28px",
           fontWeight: "600",
-          color: "#f1f5f9",
-          letterSpacing: "1px"
+          color: "#1e293b"
         }}
       >
-        📊 Social Media Analytics
+        📊 Social Media Analytics Dashboard
       </motion.h1>
 
       {/* GRID */}
@@ -549,14 +546,16 @@ function App() {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: "25px",
+          gap: "20px",
           maxWidth: "1200px",
           margin: "auto"
         }}
       >
         {/* Trending */}
-        <motion.div whileHover={{ scale: 1.03 }} style={cardStyle}>
-          <h3 style={{ marginBottom: "10px" }}>🔥 Trending Hashtags</h3>
+        <motion.div whileHover={{ scale: 1.02 }} style={cardStyle}>
+          <h3 style={{ marginBottom: "10px", color: "#334155" }}>
+            🔥 Trending Hashtags
+          </h3>
           <Bar
             data={{
               labels: trending.map(t => t._id),
@@ -564,7 +563,7 @@ function App() {
                 {
                   label: "Usage",
                   data: trending.map(t => t.count),
-                  backgroundColor: "#38bdf8"
+                  backgroundColor: "#6366f1"
                 }
               ]
             }}
@@ -573,8 +572,10 @@ function App() {
         </motion.div>
 
         {/* Users */}
-        <motion.div whileHover={{ scale: 1.03 }} style={cardStyle}>
-          <h3 style={{ marginBottom: "10px" }}>👤 Active Users</h3>
+        <motion.div whileHover={{ scale: 1.02 }} style={cardStyle}>
+          <h3 style={{ marginBottom: "10px", color: "#334155" }}>
+            👤 Active Users
+          </h3>
           <Bar
             data={{
               labels: users.map(u => u._id),
@@ -582,7 +583,7 @@ function App() {
                 {
                   label: "Posts",
                   data: users.map(u => u.totalPosts),
-                  backgroundColor: "#a78bfa"
+                  backgroundColor: "#0ea5e9"
                 }
               ]
             }}
@@ -591,8 +592,10 @@ function App() {
         </motion.div>
 
         {/* Likes */}
-        <motion.div whileHover={{ scale: 1.03 }} style={cardStyle}>
-          <h3 style={{ marginBottom: "10px" }}>❤️ Engagement</h3>
+        <motion.div whileHover={{ scale: 1.02 }} style={cardStyle}>
+          <h3 style={{ marginBottom: "10px", color: "#334155" }}>
+            ❤️ Engagement
+          </h3>
           <Pie
             data={{
               labels: likes.map(l => l._id),
@@ -600,11 +603,11 @@ function App() {
                 {
                   data: likes.map(l => l.totalLikes),
                   backgroundColor: [
-                    "#38bdf8",
-                    "#a78bfa",
-                    "#f472b6",
-                    "#34d399",
-                    "#facc15"
+                    "#6366f1",
+                    "#0ea5e9",
+                    "#f59e0b",
+                    "#10b981",
+                    "#ef4444"
                   ]
                 }
               ]
