@@ -75,6 +75,17 @@ app.post("/addPost", async (req, res) => {
 });
 
 
+// ✅ GET ALL POSTS (THIS MUST BE OUTSIDE)
+app.get("/posts", async (req, res) => {
+  try {
+    const posts = await Post.find();
+    res.json(posts);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
 // ✅ TRENDING
 app.get("/trending", async (req, res) => {
   try {
