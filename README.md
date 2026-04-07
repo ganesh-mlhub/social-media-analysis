@@ -101,4 +101,4 @@ npm start
 
 ## 👨‍💻 Author
 
-Ganesh (AI & DS Student)
+Ganesh Bhusare (AI & DS Student)
