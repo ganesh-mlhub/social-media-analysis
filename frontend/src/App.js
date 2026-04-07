@@ -32,18 +32,18 @@ function App() {
   }, []);
 
   const fetchData = async () => {
-  try {
-    const t = await axios.get(process.env.REACT_APP_API_URL + "/trending");
-    const u = await axios.get(process.env.REACT_APP_API_URL + "/active-users");
-    const l = await axios.get(process.env.REACT_APP_API_URL + "/likes");
+    try {
+      const t = await axios.get("https://social-backend-hq65.onrender.com/trending");
+      const u = await axios.get("https://social-backend-hq65.onrender.com/active-users");
+      const l = await axios.get("https://social-backend-hq65.onrender.com/likes");
 
-    setTrending(t.data);
-    setUsers(u.data);
-    setLikes(l.data);
-  } catch (err) {
-    console.log(err);
-  }
-};
+      setTrending(t.data);
+      setUsers(u.data);
+      setLikes(l.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const cardStyle = {
     background: "#ffffff",
@@ -60,7 +60,6 @@ function App() {
         padding: "20px"
       }}
     >
-      {/* HEADER */}
       <motion.h1
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -73,7 +72,6 @@ function App() {
         🚀 Social Media Analytics Dashboard
       </motion.h1>
 
-      {/* GRID */}
       <div
         style={{
           display: "grid",
@@ -83,7 +81,6 @@ function App() {
           margin: "auto"
         }}
       >
-        {/* Trending */}
         <motion.div whileHover={{ scale: 1.05 }} style={cardStyle}>
           <h2>🔥 Trending Hashtags</h2>
           <Bar
@@ -100,7 +97,6 @@ function App() {
           />
         </motion.div>
 
-        {/* Users */}
         <motion.div whileHover={{ scale: 1.05 }} style={cardStyle}>
           <h2>👤 Active Users</h2>
           <Bar
@@ -117,7 +113,6 @@ function App() {
           />
         </motion.div>
 
-        {/* Likes */}
         <motion.div
           whileHover={{ scale: 1.05 }}
           style={{ ...cardStyle, gridColumn: "span 2" }}
